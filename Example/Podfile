@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'MCheck_Example' do
+  pod 'MCheck', :path => '../'
+
+  target 'MCheck_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
