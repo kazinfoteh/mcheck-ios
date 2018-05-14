@@ -20,13 +20,13 @@ pod 'MCheck'
 ## Sample Usage
 
 **Init SDK**
-```
+```objc
 //automatically generated token from https://isms.center
 NSString *token = @"YOUR_TOKEN";
 self.mCheck = [[MCheck alloc] initWithToken:token];
 ```
 **Request validation**
-```
+```objc
 // [:phone] phone number
 // [:pin] validation code
 
@@ -42,7 +42,7 @@ NSString *smsBody = @"Your validation code: [:pin]"; // smsBody is optional para
 }];
 ```
 **Verify Pin**
-```
+```objc
 NSString *requestID = @""; //request id received from [self.mCheck requestValidationWithPhone] - response.id
 NSString *pinCode = @""; //pin code to check
 
@@ -55,7 +55,7 @@ NSString *pinCode = @""; //pin code to check
 }];
 ```
 **Validation Status**
-```
+```objc
 NSString *requestID = @""; //request id received from [self.mCheck requestValidationWithPhone] - response.id
 
 [self.mCheck checkValidationStatusWithRequestId:requestID callback:^(MCheckValidationStatusResult *result, NSError *error) {
