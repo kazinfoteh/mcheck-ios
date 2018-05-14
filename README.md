@@ -1,15 +1,12 @@
-# MCheck
+# mCheck SDK 
 
-[![CI Status](https://img.shields.io/travis/Kurdakrx/MCheck.svg?style=flat)](https://travis-ci.org/Kurdakrx/MCheck)
-[![Version](https://img.shields.io/cocoapods/v/MCheck.svg?style=flat)](https://cocoapods.org/pods/MCheck)
-[![License](https://img.shields.io/cocoapods/l/MCheck.svg?style=flat)](https://cocoapods.org/pods/MCheck)
-[![Platform](https://img.shields.io/cocoapods/p/MCheck.svg?style=flat)](https://cocoapods.org/pods/MCheck)
+mCheck SDK for ios let you integrate the mobile phone number validation API in mobile devices.
+
+In order to test the sample you need to change the secret key.
 
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
 
 ## Installation
 
@@ -20,9 +17,55 @@ it, simply add the following line to your Podfile:
 pod 'MCheck'
 ```
 
-## Author
+## Sample Usage
 
-Kurdakrx, shopanov.yelnar@gmail.com
+**Init SDK**
+```
+//automatically generated token from https://isms.center
+NSString *token = @"YOUR_TOKEN";
+self.mCheck = [[MCheck alloc] initWithToken:token];
+```
+**Request validation**
+```
+// [:phone] phone number
+// [:pin] validation code
+
+NSString *phone = "+77770000000";
+NSString *smsBody = @"Your validation code: [:pin]"; // smsBody is optional param, and maybe is null
+
+[self.mCheck requestValidationWithPhone:phone type:SMS message:smsBody callback:^(MCheckRequestValidationResult *result, NSError *error) {
+    if (error) {
+        return;
+    }
+
+    //[self showMessage:[NSString stringWithFormat:@"Success, request ID: %ld", (long)result.rid]];
+}];
+```
+**Verify Pin**
+```
+NSString *requestID = @""; //request id received from [self.mCheck requestValidationWithPhone] - response.id
+NSString *pinCode = @""; //pin code to check
+
+[self.mCheck verifyValidationWithRequestId:requestID pin:pinCode callback:^(MCheckVerifyValidationResult *result, NSError *error) {
+    if (error) {
+        return;
+    }
+
+    //[self showMessage:[NSString stringWithFormat:@"Validated: %@", result.validated ? @"YES" : @"NO"]];
+}];
+```
+**Validation Status**
+```
+NSString *requestID = @""; //request id received from [self.mCheck requestValidationWithPhone] - response.id
+
+[self.mCheck checkValidationStatusWithRequestId:requestID callback:^(MCheckValidationStatusResult *result, NSError *error) {
+    if (error) {
+        return;
+    }
+
+    //[self showMessage:[NSString stringWithFormat:@"Validated: %@", result.validated ? @"YES" : @"NO"]];
+}];
+```
 
 ## License
 

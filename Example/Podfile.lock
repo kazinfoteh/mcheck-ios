@@ -1,0 +1,19 @@
+PODS:
+  - MCheck (0.1.0)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - MCheck (from `../`)
+  - SVProgressHUD
+
+EXTERNAL SOURCES:
+  MCheck:
+    :path: ../
+
+SPEC CHECKSUMS:
+  MCheck: a99c56e905878ec9ed336ba0f2c51d6958acacae
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 4df84264a1a1d33e380e978cf56b8437312b3b24
+
+COCOAPODS: 1.3.1

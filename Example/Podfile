@@ -2,6 +2,7 @@ use_frameworks!
 
 target 'MCheck_Example' do
   pod 'MCheck', :path => '../'
+  pod 'SVProgressHUD'
 
   target 'MCheck_Tests' do
     inherit! :search_paths
